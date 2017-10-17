@@ -4,12 +4,20 @@
 </ul>
 
 <h2>Ajouter un commentaire</h2>
-<form action="">
+
+<form (submit)="submitNewComment()" *ngIf="newComment">
+  
   <label for="userName">Indiquez votre nom</label>
-  <input type="text" id="userName" name="userName">
+  <input type="text" id="userName" name="userName" 
+    [(ngModel)]="newComment.author"
+  >
 
   <label for="userComment">Ajouter un commentaire</label>
-  <textarea name="userComment" id="userComment"></textarea>
+  <textarea name="userComment" id="userComment"
+    [(ngModel)]="newComment.content"
+  ></textarea>
 
   <button type="submit">Ajouter</button>
+
+  {{newComment | json}}
 </form>

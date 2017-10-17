@@ -9,5 +9,11 @@
 
 <!-- Afficher les commentaires -->
 <section *ngIf="postComment">
-    <app-comments [postComment]="postComment"></app-comments>
+    <app-comments 
+        [postComment]="postComment" 
+        [uniqPostId]="uniqPostId"
+
+        (sendComment)="outputEvent($event)"
+    >
+    </app-comments>
 </section>

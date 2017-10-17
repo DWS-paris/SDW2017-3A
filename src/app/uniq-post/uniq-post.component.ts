@@ -10,6 +10,9 @@ import { PostCommentService } from '../services/post-comment.service'
 // Importer l'interface PostModel
 import { PostModel } from '../data/post.model'
 
+// Importer l'interface CommentModel
+import { CommentModel } from '../data/comment.model'
+
 
 @Component({
   selector: 'app-uniq-post',
@@ -20,7 +23,8 @@ export class UniqPostComponent implements OnInit {
 
   public uniqPost: PostModel
   public error: any
-  public postComment: Array<any>
+  public postComment: Array<CommentModel>
+  public uniqPostId: number
 
   constructor(
     // Injecter la classe du service
@@ -39,6 +43,7 @@ export class UniqPostComponent implements OnInit {
       // Appeler la fonction getUniqPost en y indiquant l'id
       this.getUniqPost(+params.id)
       this.getPostComment(+params.id)
+      this.uniqPostId = +params.id
     })
   }
 
@@ -54,6 +59,14 @@ export class UniqPostComponent implements OnInit {
   private getPostComment(id: number){
     this.myCommentService.getPostComment(id).then(
       data => this.postComment = data,
+      error => console.log(error)
+    )
+  }
+
+  // Créer une fonction pour capter l'événement sendComment
+  public outputEvent(event: CommentModel):void {
+    this.myCommentService.addNewComment(event).then(
+      data => console.log(data),
       error => console.log(error)
     )
   }

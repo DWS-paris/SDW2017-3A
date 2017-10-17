@@ -139,6 +139,7 @@ export class AddPostComponent implements OnInit {
           // Changer la variable postCreated
           this.postCreated = true
         },
+        
         error => console.log(error)
       )
 

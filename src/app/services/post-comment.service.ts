@@ -7,6 +7,9 @@ import { Http, Response } from '@angular/http'
 // Importer le système de promise depuis rxjs
 import 'rxjs/add/operator/toPromise'
 
+// Importer l'interface CommentModel
+import { CommentModel } from '../data/comment.model'
+
 @Injectable()
 export class PostCommentService {
 
@@ -22,6 +25,11 @@ export class PostCommentService {
   // Créer une fonction pour afficher les commentaires
   public getPostComment(id: number): Promise<any[]> {
     return this.http.get(this.apiUrl + id).toPromise().then(this.getDataFromApi).catch(this.handleError)
+  }
+
+  // Créer une fonction pour ajouter une commentaire
+  public addNewComment(newComment: CommentModel): Promise<CommentModel[]>{
+    return this.http.post(this.apiUrl, newComment).toPromise().then(this.getDataFromApi).catch(this.handleError)
   }
 
 
