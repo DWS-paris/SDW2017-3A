@@ -2,9 +2,15 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+
+  template: `
+    <!-- Ajouter le partial nav.component -->
+    <app-nav></app-nav>
+    
+    <!-- Utiliser la directive pour afficher le contenu des routes -->
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {
-  title = 'app';
+  public title: string = 'app';
 }

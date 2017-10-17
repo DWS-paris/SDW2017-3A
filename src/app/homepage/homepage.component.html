@@ -1,0 +1,22 @@
+<!--
+Attendre que le tableau dataArray soit rempli 
+et vérifier qu'il n'y à pas d'erreur
+-->
+<section *ngIf="dataArray && !errorCode">
+
+  <!-- Faire une itération sur le tableau postsArray -->
+  <article *ngFor="let item of dataArray">
+    <figure>
+      <img src="{{item.cover}}">
+      <figcaption>{{item.title}}</figcaption>
+    </figure>
+    <p>{{item.description}}</p>
+
+    <!-- Ajouter un lien pour lire la suite --> 
+    <a routerLink="post/{{item.id}}">Lire la suite</a>
+  </article>
+  
+</section>
+
+<!-- Afficher un message d'erreur -->
+<p *ngIf="errorCode">Problème de requête : {{errorCode}}</p>

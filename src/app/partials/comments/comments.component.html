@@ -1,0 +1,15 @@
+<h2>Commentaire(s)</h2>
+<ul *ngIf="postComment">
+  <li *ngFor="let item of postComment">{{item.content}}<b>{{item.author}}</b></li>
+</ul>
+
+<h2>Ajouter un commentaire</h2>
+<form action="">
+  <label for="userName">Indiquez votre nom</label>
+  <input type="text" id="userName" name="userName">
+
+  <label for="userComment">Ajouter un commentaire</label>
+  <textarea name="userComment" id="userComment"></textarea>
+
+  <button type="submit">Ajouter</button>
+</form>

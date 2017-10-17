@@ -1,0 +1,63 @@
+<h1>Ajouter un article</h1>
+
+<!-- Capter la soumission du formulaire -->
+<form action="#" (submit)="submitForm()" [hidden]="postCreated">
+
+  <label for="postTitle">
+    Titre de l'article 
+
+    <!-- Indication lors de la frappe -->
+    <span *ngIf="uniqPostObject.title.length < 5" >Minimum 5 caractères</span>
+
+    <!-- Message d'erreur à la validation -->
+    <span [hidden]="!errorTitle">Champs Obligatoire</span>
+
+  </label>
+
+  <!-- 
+    Le ngModel permet de faire le binding dans les deux sens :
+    ctrl => vue => ctrl
+  -->
+  <input 
+    [(ngModel)]="uniqPostObject.title"
+    
+    type="text" 
+
+    name="postTitle"
+
+    id="postTitle" 
+
+    placeholder="Définir le titre de l'article"
+
+    required="required"
+
+    (focus)="hideError($event.srcElement.name)"
+  >
+
+
+  <label for="postDescription">
+    Description courte
+    <span [hidden]="!errorDescription">Champs Obligatoire</span>
+  </label>
+  <textarea [(ngModel)]="uniqPostObject.description" name="postDescription" id="postDescription" placeholder="Ajouter une description courte" required="required" (focus)="hideError($event.srcElement.name)"></textarea>
+
+  <label for="postContent">
+    Contenu
+    <span [hidden]="!errorContent">Champs Obligatoire</span>
+  </label>
+  <textarea [(ngModel)]="uniqPostObject.content" name="postContent" id="postContent" placeholder="Ajouter le contenu de votre post" required="required" (focus)="hideError($event.srcElement.name)"></textarea>
+
+  <label for="postCover">
+    Ajouter une image
+    <span [hidden]="!errorCover">Champs Obligatoire</span>
+  </label>
+  <input [(ngModel)]="uniqPostObject.cover" type="text" id="postCover" name="postCover" required="required" (focus)="hideError($event.srcElement.name)">
+  
+
+  <button type="submit">Ajouter</button>
+
+</form>
+
+<section [hidden]="!postCreated">
+  <p>Votre article est créé, cliquez <a routerLink="/post/{{newPostId}}">ici pour l'afficher</a></p>
+</section>

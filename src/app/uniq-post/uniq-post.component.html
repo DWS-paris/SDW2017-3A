@@ -1,0 +1,13 @@
+<section *ngIf="uniqPost">
+    <h1>{{uniqPost.title}}</h1>
+    <img src="{{uniqPost.cover}}" alt="{{uniqPost.title}}">
+    <p>{{uniqPost.content}}</p>
+</section>
+
+<!-- Ajouter un lien pour retourner sur la page d'acceuil --> 
+<a routerLink="/">Retour</a>
+
+<!-- Afficher les commentaires -->
+<section *ngIf="postComment">
+    <app-comments [postComment]="postComment"></app-comments>
+</section>

@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.5rem;
+    padding: 3rem;
+}
+
+input, label, button, textarea{
+    display: block;
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: 1rem;
+}
