@@ -13,12 +13,12 @@ export class CommentsComponent implements OnInit {
   // Utiliser le décorateur @Input pour récupérer des données depuis le composant parent
   @Input() postComment: CommentModel
   @Input() uniqPostId: number
+  @Input() newComment: CommentModel
 
   // Envoyer des données dans le composant parent
   @Output() sendComment: EventEmitter<CommentModel> = new EventEmitter
   
-  // Créer une variable de type CommentModel pour le formulaire
-  public newComment: CommentModel
+  
 
   // Ecrire la fonction de traitement du formulaire
   public submitNewComment(): void{
@@ -34,13 +34,6 @@ export class CommentsComponent implements OnInit {
 
   constructor(){}
 
-  ngOnInit() {
-    // Définir le contenu de l'objet
-    this.newComment = {
-      postId: this.uniqPostId,
-      content: '',
-      author: ''
-    }
-  }
+  ngOnInit() {}
 
 }

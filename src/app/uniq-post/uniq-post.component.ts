@@ -26,6 +26,9 @@ export class UniqPostComponent implements OnInit {
   public postComment: Array<CommentModel>
   public uniqPostId: number
 
+  // Créer une variable de type CommentModel pour le formulaire addComment
+  public newComment: CommentModel
+
   constructor(
     // Injecter la classe du service
     private myService: BlogPostsService,
@@ -66,13 +69,26 @@ export class UniqPostComponent implements OnInit {
   // Créer une fonction pour capter l'événement sendComment
   public outputEvent(event: CommentModel):void {
     this.myCommentService.addNewComment(event).then(
-      data => console.log(data),
+      data => {
+        this.postComment.push(data)
+        this.newCommentInit()
+      },
       error => console.log(error)
     )
   }
 
+  public newCommentInit():void{
+    // Définir le contenu de l'objet du formulaire addComment
+    this.newComment = {
+      postId: this.uniqPostId,
+      content: '',
+      author: ''
+    }
+  }
+
   ngOnInit() {
     this.getRouteParam()
+    this.newCommentInit()
   }
 
 }

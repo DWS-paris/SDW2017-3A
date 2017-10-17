@@ -4,7 +4,7 @@ export interface CommentModel {
     // Rendre un paramètre optionnel => param?: type
     readonly id?: number,
     
-    postId: number,
+    postId?: number,
     content: string,
     author: string
 }

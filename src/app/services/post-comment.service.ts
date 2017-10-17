@@ -28,7 +28,7 @@ export class PostCommentService {
   }
 
   // Créer une fonction pour ajouter une commentaire
-  public addNewComment(newComment: CommentModel): Promise<CommentModel[]>{
+  public addNewComment(newComment: CommentModel): Promise<CommentModel>{
     return this.http.post(this.apiUrl, newComment).toPromise().then(this.getDataFromApi).catch(this.handleError)
   }
 
