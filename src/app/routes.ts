@@ -2,10 +2,6 @@
 import { ModuleWithProviders } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 
-// Importer les composants à utiliser dans les routes
-import { HomepageComponent } from './homepage/homepage.component'
-import { AddPostComponent } from './add-post/add-post.component'
-import { UniqPostComponent } from './uniq-post/uniq-post.component'
 
 // Créer une constante pour définir le comportement des routes
 const appRoutes: Routes = [
@@ -14,16 +10,16 @@ const appRoutes: Routes = [
     */
     {
         path: '',
-        component: HomepageComponent
+        loadChildren: './homepage/homepage.module#HomepageModule'
     },
     {
         path: 'add',
-        component: AddPostComponent
+        loadChildren: './add-post/add-post.module#AddPostModule'
     },
     {
         // Ajouter un paramètre dans la route :id
         path: 'post/:id',
-        component: UniqPostComponent
+        loadChildren: './uniq-post/uniq-post.module#UniqPostModule'
     }
 ]
 
